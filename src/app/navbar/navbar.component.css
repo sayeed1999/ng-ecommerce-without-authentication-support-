@@ -1,0 +1,8 @@
+.nav-head {
+    padding: 15px;
+}
+
+.nav-head:hover {
+    background: #ededed;
+    cursor: pointer;
+}

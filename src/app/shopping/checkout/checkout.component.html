@@ -1,0 +1,64 @@
+<div class="container">
+    <div class="row">
+        <h2 class="col-12 mt-4">
+            Shipping!
+        </h2>
+
+        <div class="col-md-6 mt-4" *ngIf='cart.length>=1'>
+            <!-- shipping form here -->
+            <form #f="ngForm">
+                <div class="form-group">
+                    <label class="col-form-label" for="name">Name <sup>*</sup> </label>
+                    <input class="form-control" type="text" id="name" name="name" [(ngModel)]="name" required placeholder="Name">
+                    <div *ngIf="f.form.controls.name?.touched && f.form.controls.name?.invalid" class="alert alert-danger">
+                        <em>Name is Required!</em>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-form-label" for="contact">Contact <sup>*</sup> </label>
+                    <input class="form-control" type="number" id="contact" [(ngModel)]="contact" name="contact" required placeholder="Your cellphone/telephone no.">
+                    <div *ngIf="f.form.get('contact')?.touched && f.form.get('contact')?.invalid" class="alert alert-danger">
+                        <em>Contact is Required!</em>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-form-label" for="address">Address <sup>*</sup> </label>
+                    <input class="form-control" type="text" id="address" [(ngModel)]="address" name="address" required placeholder="Address">
+                    <div *ngIf="f.form.get('address')?.touched && f.form.get('address')?.invalid" class="alert alert-danger">
+                        <em>Address is Required!</em>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-form-label" for="sub-address">Sub-Address</label>
+                    <input class="form-control" type="text" id="sub-adress" [(ngModel)]="subAddress" name="subAddress" placeholder="Sub-Address (optional)">
+                </div>
+                <div *ngIf="f.invalid && f.touched" class="mt-2 alert alert-danger">
+                    <strong>Invalid form cannot be Submitted!</strong>
+                </div>
+                <div class="form-group">
+                    <button [disabled]="f.form.invalid" class="mt-2" type="button" (click)="checkoutSubmit()" mat-raised-button color="primary" [routerLink]="['/order-process']">Place Order</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="col-md-6 my-4 thin-light-border" *ngIf='cart.length>0'>
+            <!-- order summary here -->
+            <h1>Order Summary</h1>
+            <h2 style="font-weight:400">You have 8 items in your shopping cart.</h2>
+            <hr>
+            <div *ngFor="let item of cart">
+                <div style="display: flex;">
+                    <p>{{item.quantity}} x {{item.product.name}}</p>
+                    <p style="margin-left: auto">{{item.product.price | currency}}</p>
+                </div>
+            </div>
+            <hr>
+            <strong> Total: {{ totalCost | currency }} </strong>
+        </div>
+
+        <div *ngIf="cart.length<=0">
+            <h3>You don't have any items in cart! Do you want empty shipping? :D</h3>
+        </div>
+        <button class="mt-5 mb-2 col-3" mat-raised-button routerLink="/shopping-cart">Go Back</button>
+    </div>
+</div>

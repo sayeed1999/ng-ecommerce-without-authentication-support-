@@ -1,0 +1,16 @@
+<mat-toolbar>
+      <div class="nav-head" routerLink="home">
+        Organics
+      </div>
+    <button mat-icon-button [routerLink]="['/shopping-cart']">
+      <mat-icon matTooltip="Wanna visit cart?" matTooltipHideDelay="1000"
+        >shopping_cart</mat-icon>
+      <span matBadge={{qty}} matBadgeOverlap="false" matBadgeColor="warn"></span>
+    </button>
+    <button mat-button color="accent" style="margin-left: auto">
+        Mosh Hamedani
+        <span class="material-icons">
+            arrow_drop_down
+        </span>
+    </button>
+  </mat-toolbar>

@@ -1,0 +1,33 @@
+<div class="container mt-4">
+    <h2>Shopping Cart</h2>
+    <table class="table" *ngIf="cart.length>0">
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Quantity</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of cart; let i=index">
+            <td>
+                <img class="img-fluid rounded" style="width: 100px; height: 100px;" src={{item.product.imageUrl}} alt="">
+            </td>
+            <td class="py-5"> {{ item.product.name }} </td>
+            <td class="py-5"> {{ item.product.price | currency }} </td>
+            <td class="py-4">
+                <button (click)="changeQty(i, -1)" mat-mini-fab color="accent"> - </button>
+                {{" "}} {{ item.quantity }} {{" "}} 
+                <button (click)="changeQty(i, 1)" mat-mini-fab color="primary"> + </button>
+            </td>
+          </tr>
+        </tbody>
+    </table>
+    <h2 style="font-weight: 400;" *ngIf="cart.length===0">You have not currently any items in cart!</h2>
+
+    <div class="row" *ngIf="cart.length>0">
+        <h4 class="col-12" style="text-align:right; font-weight:500">Total Cost: {{ totalCost | currency }}</h4>
+        <button class="col-12 col-md-3" mat-raised-button color="primary" routerLink="/check-out">Checkout</button>  <!-- 'check-out' is relative to 'this.route', but '/check-out' is to the root! -->
+    </div>
+</div>

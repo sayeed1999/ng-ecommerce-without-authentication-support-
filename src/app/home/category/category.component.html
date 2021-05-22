@@ -1,0 +1,14 @@
+<mat-selection-list #organics [multiple]="false">
+    <mat-list-option value="all" (click)="selectCategory('all')" style="font-weight: 500;">All Categories</mat-list-option>
+    <mat-divider></mat-divider>
+    <div *ngFor="let organic of typesOfOrganics">
+        <mat-list-option [value]="organic" (click)="selectCategory(organic)">
+          {{organic}}
+        </mat-list-option>
+        <mat-divider></mat-divider>
+    </div>
+  </mat-selection-list>
+  
+  <!-- <p>
+    Option selected: {{organics.selectedOptions.selected[0]?.value}}
+  </p> -->

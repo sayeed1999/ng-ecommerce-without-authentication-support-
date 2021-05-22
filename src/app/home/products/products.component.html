@@ -1,0 +1,14 @@
+<div class="row mx-4 mt-4 d-flex">
+    <p class="col-4" style="font-size:large; flex-grow:1">Showing Category: {{ selectedCategory }}</p>
+    <input class="form-control" [(ngModel)]="searchTerm" (ngModelChange)="onSearchTrigger()"  style="width:200px" type="text" placeholder="Search">
+</div>
+
+<div class="row" style="justify-content: space-around;" *ngIf="showProducts.length>0">
+  <mat-card class="col-8 col-md-5 m-3" *ngFor="let product of showProducts;">
+      <app-product [product]="product"></app-product>
+  </mat-card>
+</div>
+
+<div class="m-4" *ngIf="showProducts.length===0">
+  <h5>No items to show on this category or search. :(</h5>
+</div>

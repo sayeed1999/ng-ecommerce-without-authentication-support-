@@ -1,0 +1,13 @@
+<mat-card-content>
+    <img mat-card-image style="height: 200px;" src={{product.imageUrl}}>
+    <mat-card-title> {{ product.name }} </mat-card-title>
+    <mat-card-subtitle> {{ product.price | currency }} </mat-card-subtitle>
+</mat-card-content>
+<mat-card-actions>
+    <button *ngIf="!isAddedToCart" (click)="addToCart()" style="width: 100%" mat-flat-button color="primary">Add to Cart</button>
+    <div *ngIf="!!isAddedToCart" class="d-flex">
+        <button [disabled]="!isAddedToCart" (click)="changeQuantity(-1)" mat-flat-button color="accent"> - </button>
+        <button mat-button style="flex-grow:1;"> Added To Cart </button>
+        <button (click)="changeQuantity(+1)" mat-flat-button color="accent"> + </button>
+    </div>
+</mat-card-actions>
