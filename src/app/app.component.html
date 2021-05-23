@@ -1,2 +1,8 @@
 <app-navbar></app-navbar>
 <router-outlet></router-outlet>
+
+<mat-card [hidden]="state==='removeFromDOM'" [@appOpen]="state" style="width: 70vw; background: #f7f3f3b2; position: absolute; left: 50vw; top: -50vh; transform: translate(-50%, -50%);">
+    <h1 style="  text-align: center; font-weight: 400; color: #424242">
+        Welcome To Our Organic Shop!
+    </h1>
+</mat-card>
